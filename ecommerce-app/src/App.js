@@ -7,10 +7,20 @@ import Contact from './Contact'
 import SingleProduct from './SingleProduct'
 import Cart from './Cart'
 import ErrorPage from './ErrorPage'
+import {GlobalStyle} from './GlobalStyle'
+import { ThemeProvider } from 'styled-components'
+import Header from './components/Header'
 function App() {
+  const theme = {
+    colors: {
+      bg: "#000",
+    },
+  }
   return (
-    
+    <ThemeProvider theme={theme}>
     <Router>
+      <GlobalStyle/>
+      <Header/>
       <Routes>
         <Route path="/" elements={<Home />} /> 
         <Route path='About' element={<About />} />
@@ -21,6 +31,7 @@ function App() {
         <Route path='*' element={<ErrorPage />} />
       </Routes>
     </Router>
+    </ThemeProvider>
   )
 }
 
